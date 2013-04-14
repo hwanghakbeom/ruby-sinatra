@@ -1,0 +1,26 @@
+<head>
+<script language="JavaScript" src="gen_validatorv4.js"
+    type="text/javascript" xml:space="preserve"></script></head>
+<body>
+<section id="add">
+	<form action="/login" method="post" id="myform" name="myform">
+		<textarea name="content" placeholder="Your note&hellip;" ></textarea>
+		<input type="submit" value="Create New Post" >
+	</form>
+	<script language="JavaScript" type="text/javascript" xml:space="preserve">
+	 var frmvalidator  = new Validator("myform");
+  	frmvalidator.addValidation("content","maxlen=20",	"Max length for FirstName is 20");
+	</script>
+</section>
+<% @notes.each do |note| %>
+	<article>
+		<p>
+			<%=h note.content %>
+			<span><a href="/<%= note.id %>">[edit]</a></span>
+		</p>
+		<p class="meta">Created: <%= note.created_at %></p>
+	</article>
+<% end %> 
+</body>
+</html>
+

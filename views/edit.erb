@@ -1,0 +1,10 @@
+<% if @username %>
+	<form action="/<%= @user.username %>" method="post" id="edit">
+		<input type="hidden" name="_method" value="put">
+		<textarea name="content"><%=h @user.password %></textarea>
+		<input type="submit">
+	</form>
+	<p><a href="/<%= @note.id %>/delete">Delete</a></p>
+<% else %>
+	<p>Note not found.</p>
+<% end %>

@@ -1,0 +1,9 @@
+<% @notes.each do |note| %>
+	<article>
+		<p>
+			<%=h note.content %>
+			<span><a href="/<%= note.id %>">[edit]</a></span>
+		</p>
+		<p class="meta">Created: <%= note.created_at %></p>
+	</article>
+<% end %>

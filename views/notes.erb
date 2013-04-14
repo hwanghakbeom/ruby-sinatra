@@ -1,0 +1,38 @@
+<head><script type='text/javascript'>
+function lengthRestriction(elem, min, max){
+	var uInput = elem.value;
+	if(uInput.length >= min && uInput.length <= max){
+		return true;
+	}else{
+		alert("Please enter between " +min+ " and " +max+ " characters");
+		elem.focus();
+		return false;
+	}
+}
+function len_chk(elem){
+	if(elem.value.length >200){
+	alert("max length 200");
+	elem.value = elem.value.substring(0,200);
+	elem.focus();
+	}
+	
+}
+</script>
+</head>
+<body>
+<section id="add">
+	<form action="/login" method="post">
+		<textarea name="content" placeholder="Your note&hellip;" id='content' onKeyup="len_chk(this)"></textarea>
+		<input type="submit" value="Create New Post" onclick="lengthRestriction(document.getElementById('content'), 0, 200)">
+	</form>
+</section>
+<% @notes.each do |note| %>
+	<article>
+		<p>
+			<%=h note.content %>
+			<span><a href="/<%= note.id %>">[edit]</a></span>
+		</p>
+		<p class="meta">Created: <%= note.created_at %></p>
+	</article>
+<% end %>
+</body>
